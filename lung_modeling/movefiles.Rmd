@@ -1,0 +1,95 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(janitor)
+library(filesstrings)
+```
+
+```{r}
+df <- read_csv("/Users/nino/Desktop/lung_can/df.csv")
+df_ori <- clean_names(df, case = "parsed")
+
+```
+
+```{r}
+
+df <- df %>%
+  filter(Finding_Labels == "No Finding")
+
+
+```
+
+```{r}
+
+out.file <- ""
+file.names <- dir(getwd(), pattern = ".png")
+file.names
+
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df$Image_Index) {
+   file.move(paste0("/Users/nino/Desktop/lung_can/images/",file.names[i]), "/Users/nino/Desktop/lung_can/images/No Finding")
+ } 
+}
+
+
+```
+
+```{r,message= FALSE}
+df_car <- df_ori %>%
+  filter(Finding_Labels == "Cardiomegaly")
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_car$Image_Index) {
+   file.move(paste0("/Users/nino/Desktop/lung_can/images/",file.names[i]), "/Users/nino/Desktop/lung_can/images/Cardiomegaly")
+ } 
+}
+```
+```{r}
+df_Her <- df_ori %>%
+  filter(Finding_Labels == "Hernia")
+
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_Her$Image_Index) {
+   file.move(paste0("/Users/nino/Desktop/lung_can/images/",file.names[i]), "/Users/nino/Desktop/lung_can/images/Hernia")
+ } 
+}
+```
+```{r}
+df_inf <- df_ori %>%
+  filter(Finding_Labels == "Infiltration")
+
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_inf$Image_Index) {
+   file.move(paste0("/Users/nino/Desktop/lung_can/images/",file.names[i]), "/Users/nino/Desktop/lung_can/images/Infiltration")
+ } 
+}
+```
+
+
+```{r,message= FALSE}
+df_ate <- df_ori %>%
+  filter(Finding_Labels == "Atelectasis")
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_ate$Image_Index) {
+   file.move(paste0("/Users/nino/Desktop/lung_can/images/",file.names[i]), "/Users/nino/Desktop/lung_can/images/Atelectasis")
+ } 
+}
+```
+
+```{r}
+df %>%
+  filter(Image_Index == "00008312_001.png")
+```
+
+```{r}
+df %>% 
+ group_by(Finding_Labels) %>%
+ summarise(number = n()) %>%
+  select(number, Finding_Labels, everything()) %>%
+  arrange(-number)
+
+```
+
+
