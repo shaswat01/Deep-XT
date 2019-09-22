@@ -1,6 +1,6 @@
 # Deep XT
 A BigRedHacks project by:
-*Shaswat Rajput, Mingli Yang, Yuzhi Yao, Ali Yaqoob*
+*Shaswat Rajput, Mingli Yang, Yuzhi Yao, and Ali Yaqoob*
 
 ## Part 1
 Reading and diagnosing chest x-ray images may be a relatively simple task for radiologists but, in fact, it is a complex reasoning problem which often requires careful observation and knowledge of anatomical principles, physiology and pathology. Such factors increase the difficulty of developing a consistent and automated technique for reading chest X-ray images while simultaneously considering all common thoracic diseases.
