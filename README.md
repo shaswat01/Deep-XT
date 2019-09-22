@@ -2,8 +2,17 @@
 A BigRedHacks project by:
 *Shaswat Rajput, Mingli Yang, Yuzhi Yao, and Ali Yaqoob*
 
+Pneumonia is a common disease, affecting 5 million Americans per year, and is the 6th leading cause of death in the United States. Patient survival improves significantly when pneumonia is diagnosed and treated within 4 hours of the patient arriving at the hospital. And a key part of the diagnostic algorithm is accurate and timely interpretation of chest radiographs. 
+
+- **Help radiologists improve their working efficiency.**
+Our machine learning model can be a support tool to help radiologists diagnosis X-ray picture. Given the X-ray picture, our model will return the probability of most common thoracic diseases observed in chest X-rays. 
+Our deep learning model can help radiologists/ doctors find the lesions that are hard to find by eyes.
+- **Reliable computer diagnosis of pneumonia can help with patients in underserved or remote areas**
+For patients in remote or rural areas, access to a clinic or small hospital with basic x-ray machinery is relatively available.
+ It can still be difficult for those patients to have their images interpreted within the preferred 4-hour window. 
+
+
 ## Part 1
-Reading and diagnosing chest x-ray images may be a relatively simple task for radiologists but, in fact, it is a complex reasoning problem which often requires careful observation and knowledge of anatomical principles, physiology and pathology. Such factors increase the difficulty of developing a consistent and automated technique for reading chest X-ray images while simultaneously considering all common thoracic diseases.
 
 **Aims:**
 1. To  reduce the time it would take for a doctor to analyze patient lung x ray scans. 
