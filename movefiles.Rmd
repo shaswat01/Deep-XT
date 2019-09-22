@@ -1,0 +1,87 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Import libraries
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(filesstrings)
+```
+
+# Read data into the workspace
+```{r}
+
+
+df <- read_csv("C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/df.csv")
+df_ori <- clean_names(df, case = "parsed") 
+
+```
+
+# Find the unhealthy training
+```{r}
+
+df_unhealthy <- df_ori %>%
+  filter(Finding_Labels != "No Finding") %>% 
+  filter(Finding_Labels == "Atelectasis" | Finding_Labels == "Infiltration" | Finding_Labels == "Effusion")
+
+df_unhealthy <- clean_names(df_unhealthy, case = "parsed")
+  
+```
+
+# Move healthy images into a different folder
+```{r, message = FALSE }
+
+out.file <- ""
+file.names <- dir("C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/images/", pattern = ".png")
+
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_unhealthy$Image_Index) {
+   file.move(paste0("C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/images/",file.names[i]),
+             
+             "C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/images/unclean") #change the filenames over here
+ } 
+}
+
+```
+
+# Could also filter images based on a specific type of disease
+```{r,message= FALSE}
+df_car <- df_ori %>%
+  filter(Finding_Labels == "Cardiomegaly")
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_car$Image_Index) {
+   file.move(paste0("/Users/nino/Desktop/lung_can/images/",file.names[i]), "/Users/nino/Desktop/lung_can/images/Cardiomegaly")
+ } 
+}
+```
+
+# Similarly, we can move the healthy images into another data set from the original data fram produced and then we move them into a different folder from the images folder
+```{r}
+
+df_healthy <- df_ori %>%
+  filter(Finding_Labels != "No Finding") %>% 
+  filter(Finding_Labels == "Atelectasis" | Finding_Labels == "Infiltration" | Finding_Labels == "Effusion")
+
+df_healthy <- clean_names(df_healthy, case = "parsed")
+
+
+```
+
+```{r}
+
+out.file <- ""
+file.names <- dir("C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/images/", pattern = ".png")
+
+for(i in 1:length(file.names)){
+ if (file.names[i] %in% df_healthy$Image_Index) {
+   file.move(paste0("C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/images/",file.names[i]),
+             
+             "C:/Users/Ali/Documents/Projects/probability_and_inference/deep_XT/x_ray_anaylsis/images/healthy") #change the filenames over here
+ } 
+}
+
+```
+
