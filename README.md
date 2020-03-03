@@ -1,6 +1,6 @@
 # Deep XT
 A BigRedHacks project by:
-*Shaswat Rajput, Mingli Yang, Yuzhi Yao, and Ali Yaqoob*
+*Shaswat Rajput,Yuzhi Yao, and Ali Yaqoob*
 
 Pneumonia is a common disease, affecting 5 million Americans per year, and is the 6th leading cause of death in the United States. Patient survival improves significantly when pneumonia is diagnosed and treated within 4 hours of the patient arriving at the hospital. And a key part of the diagnostic algorithm is accurate and timely interpretation of chest radiographs. 
 
